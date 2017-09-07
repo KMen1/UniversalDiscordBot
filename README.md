@@ -1,5 +1,5 @@
 # UniversalDiscordBot
-A Discord Bot Written in D.NET with Window comtrols
+A Discord Bot Written in D.NET with Window controls
 
 I created this bot kinda thing to help people!
 
