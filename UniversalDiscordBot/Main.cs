@@ -87,6 +87,11 @@ namespace UniversalDBot
 
         private async Task HandleCommand(SocketMessage messageParam)
         {
+            Invoke((Action)delegate
+            {
+                richTextBox2.AppendText($"[{DateTime.UtcNow}] [{messageParam.Channel}]  {messageParam.Author} -> {messageParam.Content} \n");
+            });
+        
             var message = messageParam as SocketUserMessage;
             if (message == null) return;
             int argPos = 0;
@@ -95,11 +100,6 @@ namespace UniversalDBot
             var result = await commands.ExecuteAsync(context, argPos, services);
             if (!result.IsSuccess)
                 await context.Channel.SendMessageAsync(result.ErrorReason);
-
-            Invoke((Action)delegate
-            {
-                richTextBox2.AppendText($"[{DateTime.UtcNow}] [{messageParam.Channel}]  {messageParam.Author} -> {messageParam.Content}");
-            });
         }
 
         private Task Logger(LogMessage lmsg)
