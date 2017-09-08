@@ -25,7 +25,6 @@ namespace UniversalDBot
         private IServiceProvider services;
         private string token;
         private string game;
-        private string _token = "MzM4MzA0MjM5OTEyODc4MDgw.DHImlQ.aioliWh46dZ-FEzs4VHu5l9VfAE";
 
         public Main()
         {
