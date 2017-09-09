@@ -66,7 +66,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(215, 119);
+            this.textBox1.Location = new System.Drawing.Point(338, 77);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 6;
@@ -106,13 +106,13 @@
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(462, 312);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(396, 110);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(104, 36);
+            this.materialRaisedButton1.Size = new System.Drawing.Size(170, 36);
             this.materialRaisedButton1.TabIndex = 10;
-            this.materialRaisedButton1.Text = "Send Embed";
+            this.materialRaisedButton1.Text = "Send Embed Message";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
             this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
@@ -122,13 +122,13 @@
             this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton2.Depth = 0;
             this.materialRaisedButton2.Icon = null;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(321, 110);
+            this.materialRaisedButton2.Location = new System.Drawing.Point(444, 68);
             this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton2.Name = "materialRaisedButton2";
             this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(116, 36);
+            this.materialRaisedButton2.Size = new System.Drawing.Size(122, 36);
             this.materialRaisedButton2.TabIndex = 11;
-            this.materialRaisedButton2.Text = "send normal";
+            this.materialRaisedButton2.Text = "Send Message";
             this.materialRaisedButton2.UseVisualStyleBackColor = true;
             this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
             // 

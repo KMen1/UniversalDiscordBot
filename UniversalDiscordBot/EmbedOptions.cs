@@ -16,16 +16,26 @@ namespace UniversalDiscordBot
     public partial class EmbedOptions : MaterialForm
     {
         DiscordSocketClient _client;
-        ColorDialog pickcolor;
         public EmbedOptions(DiscordSocketClient iclient)
         {
             _client = iclient;
-            pickcolor = new ColorDialog();
             InitializeComponent();
             foreach (SocketGuild guild in iclient.Guilds)
             {
                 comboBox1.Items.Add(guild.Name);
             }
+            comboBox3.Items.Add("Blue");
+            comboBox3.Items.Add("Red");
+            comboBox3.Items.Add("Purple");
+            comboBox3.Items.Add("Orange");
+            comboBox3.Items.Add("Gold");
+            comboBox3.Items.Add("Green");
+            comboBox3.Items.Add("Magenta");
+            comboBox3.Items.Add("Teal");
+            //comboBox3.Items.Add("");
+            //comboBox3.Items.Add("");
+            //comboBox3.Items.Add("");
+
         }
 
         private void EmbedOptions_Load(object sender, EventArgs e)
@@ -35,21 +45,48 @@ namespace UniversalDiscordBot
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            EmbedBuilder eb = new EmbedBuilder
+
+            var eb = new EmbedBuilder();
+            eb.WithTitle(textBox1.Text);
+            eb.WithDescription(textBox2.Text);
+            string color = comboBox3.Text;
+
+            if (color == "Blue")
             {
-                Title = textBox1.Text,
-                Description = textBox2.Text,
-                //ThumbnailUrl = ,
-                Color = Discord.Color.Green
-            };
-            
+                eb.WithColor(Discord.Color.Blue);
+            }
+            else if (color == "Red")
+            {
+                eb.WithColor(Discord.Color.Red);
+            }
+            else if (color == "Purple")
+            {
+                eb.WithColor(Discord.Color.Purple);
+            }
+            else if (color == "Orange")
+            {
+                eb.WithColor(Discord.Color.Orange);
+            }
+            else if (color == "Gold")
+            {
+                eb.WithColor(Discord.Color.Gold);
+            }
+            else if (color == "Green")
+            {
+                eb.WithColor(Discord.Color.Green);
+            }
+            else if (color == "Magenta")
+            {
+                eb.WithColor(Discord.Color.Magenta);
+            }
+            else if (color == "Teal")
+            {
+                eb.WithColor(Discord.Color.Teal);
+            }
+
             sendMessage($"", eb);
         }
 
-        private void materialRaisedButton2_Click(object sender, EventArgs e)
-        {
-            pickcolor.ShowDialog();
-        }
 
         public void sendMessage(string msg, EmbedBuilder embed = null)
         {

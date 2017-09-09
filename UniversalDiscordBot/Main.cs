@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Audio;
 using Discord.Commands;
 using Discord.WebSocket;
 using MaterialSkin;
@@ -57,7 +58,8 @@ namespace UniversalDBot
                     commands.Log += Logger;
                     client = new DiscordSocketClient(new DiscordSocketConfig
                     {
-                        LogLevel = LogSeverity.Debug
+                        LogLevel = LogSeverity.Debug,
+                        AlwaysDownloadUsers = true
                     });
 
                     services = new ServiceCollection()
@@ -66,7 +68,7 @@ namespace UniversalDBot
                     await InstallCommands();
 
                     client.Log += Logger;
-                    await client.LoginAsync(TokenType.Bot, _token);
+                    await client.LoginAsync(TokenType.Bot, token);
                     await client.StartAsync();
                     UniversalDiscordBot.Properties.Settings.Default.isConnected = true;
                     MessageBox.Show("Connected!");
@@ -75,6 +77,7 @@ namespace UniversalDBot
             else
             {
                 MessageBox.Show("Bot is already connected", "UDB");
+                
             }
 
         }
@@ -91,7 +94,7 @@ namespace UniversalDBot
             {
                 richTextBox2.AppendText($"[{DateTime.UtcNow}] [{messageParam.Channel}]  {messageParam.Author} -> {messageParam.Content} \n");
             });
-        
+
             var message = messageParam as SocketUserMessage;
             if (message == null) return;
             int argPos = 0;
@@ -112,30 +115,30 @@ namespace UniversalDBot
             return Task.CompletedTask;
         }
 
-        private async void materialRaisedButton2_Click(object sender, EventArgs e)
+        private void materialRaisedButton4_Click(object sender, EventArgs e)
         {
             if (UniversalDiscordBot.Properties.Settings.Default.isConnected == true)
             {
-
-                if (textBox2.Text == string.Empty)
-                {
-                    MessageBox.Show("Please enter a game", "UDB");
-                }
-                else
-                {
-                    game = textBox2.Text;
-                    await client.SetGameAsync(game, "https://twitch.tv", StreamType.Twitch);
-                    MessageBox.Show($"Game set to {game}", "UDB");
-                }
+                GACTools gactools = new GACTools(client);
+                gactools.Show();
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void materialRaisedButton3_Click(object sender, EventArgs e)
         {
             if (UniversalDiscordBot.Properties.Settings.Default.isConnected == true)
             {
-                GACTools channelTools = new GACTools(client);
-                channelTools.Show();
+                BotSettings botSettings = new BotSettings(client);
+                botSettings.Show();
+            }
+        }
+
+        private void materialRaisedButton5_Click(object sender, EventArgs e)
+        {
+            if (UniversalDiscordBot.Properties.Settings.Default.isConnected == true)
+            {
+                AudioPlayer audio = new AudioPlayer(client);
+                audio.Show();
             }
         }
     }

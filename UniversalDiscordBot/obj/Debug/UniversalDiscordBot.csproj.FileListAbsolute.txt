@@ -50,3 +50,8 @@ c:\users\oli\documents\visual studio 2017\Projects\UniversalDiscordBot\Universal
 C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\obj\Debug\UniversalDiscordBot.GACTools.resources
 C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\bin\Debug\MaterialSkin.dll
 C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\obj\Debug\UniversalDiscordBot.EmbedOptions.resources
+C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\obj\Debug\UniversalDiscordBot.BotSettings.resources
+C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\obj\Debug\UniversalDiscordBot.AudioPlayer.resources
+C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\bin\Debug\ffmpeg.exe
+C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\bin\Debug\libsodium.dll
+C:\Users\Oli\documents\visual studio 2017\Projects\UniversalDiscordBot\UniversalDiscordBot\bin\Debug\opus.dll
