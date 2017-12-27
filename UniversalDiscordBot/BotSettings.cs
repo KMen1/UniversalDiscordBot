@@ -60,12 +60,19 @@ namespace UniversalDiscordBot
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            _client.CurrentUser.ModifyAsync(delegate (SelfUserProperties u)
-                {
-                    u.Username = textBox1.Text;
-                });
+            if (textBox1.Text == null)
+            {
+                MessageBox.Show("Please choose a name");
+            }
+            else
+            {
+                _client.CurrentUser.ModifyAsync(delegate (SelfUserProperties u)
+                    {
+                        u.Username = textBox1.Text;
+                    });
 
-            _client.SetGameAsync(textBox2.Text, "https://twitch.tv/idk" , StreamType.Twitch);
+                _client.SetGameAsync(textBox2.Text, "https://twitch.tv/idk", StreamType.Twitch);
+            }
         }
     }
 }

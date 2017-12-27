@@ -26,6 +26,7 @@ namespace UniversalDBot
         private IServiceProvider services;
         private string token;
         private string game;
+        private string _token = "MzM4MzA0MjM5OTEyODc4MDgw.DJQrxg.zmqm8HKbpdQMAH-aMbXht13nlLA";
 
         public Main()
         {
@@ -68,7 +69,11 @@ namespace UniversalDBot
                     await InstallCommands();
 
                     client.Log += Logger;
+#if DEBUG
+                    await client.LoginAsync(TokenType.Bot, _token);
+#else
                     await client.LoginAsync(TokenType.Bot, token);
+#endif
                     await client.StartAsync();
                     UniversalDiscordBot.Properties.Settings.Default.isConnected = true;
                     MessageBox.Show("Connected!");

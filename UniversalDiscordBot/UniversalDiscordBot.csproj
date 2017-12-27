@@ -133,6 +133,9 @@
     <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
+    <Reference Include="YoutubeSearch, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YoutubeSearch.dll.1.1\lib\YoutubeSearch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioPlayer.cs">
@@ -147,6 +150,7 @@
     <Compile Include="BotSettings.Designer.cs">
       <DependentUpon>BotSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Commands\Info.cs" />
     <Compile Include="Commands\Test.cs" />
     <Compile Include="EmbedOptions.cs">
       <SubType>Form</SubType>
@@ -168,6 +172,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Youtube\SearchData.cs" />
+    <Compile Include="Youtube\TimeConverter.cs" />
     <EmbeddedResource Include="AudioPlayer.resx">
       <DependentUpon>AudioPlayer.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +220,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="opus.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="youtube-dl.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

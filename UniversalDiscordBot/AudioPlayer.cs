@@ -11,8 +11,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UniversalDiscordBot.Helpers.Others;
+using UniversalDiscordBot.Helpers.YouTube;
 
 namespace UniversalDiscordBot
 {
@@ -117,25 +120,48 @@ namespace UniversalDiscordBot
             currentsong.Start();
             return currentsong;
         }
-
-        private void materialRaisedButton3_Click(object sender, EventArgs e)
+        private string DownloadVideo(string url)
         {
-            if (comboBox1.Text == string.Empty)
+            string path = "C:/PATH/temp.webm";
+
+            File.Delete(path);
+            Thread.Sleep(2000);
+            Process.Start("youtube-dl.exe", $"-o \"{path}\" -f 250 {url}");
+
+            return path;
+        }
+
+        private async void materialRaisedButton3_Click(object sender, EventArgs e)
+        {
+            if (materialRadioButton1.Checked == true)
             {
-                MessageBox.Show("Select a Guild first!", "Error");
-                return;
+                if (comboBox1.Text == string.Empty)
+                {
+                    MessageBox.Show("Select a Guild first!", "Error");
+                    return;
+                }
+                if (comboBox2.Text == string.Empty)
+                {
+                    MessageBox.Show("Select a Voice Channel first!", "Error");
+                    return;
+                }
+                if (comboBox3.Text == string.Empty)
+                {
+                    MessageBox.Show("Select a Song first!", "Error");
+                    return;
+                }
+                send();
             }
-            if (comboBox2.Text == string.Empty)
+            else if (materialRadioButton2.Checked == true)
             {
-                MessageBox.Show("Select a Voice Channel first!", "Error");
-                return;
+                string title = SearchData.SearchTitle(textBox1.Text);
+                string url = SearchData.SearchUrl(textBox1.Text);
+                string duration = SearchData.SearchDuration(textBox1.Text);
+                var time = Convert.ToInt32(TimeConverter.ConvertMinuteToMilliseconds(duration));
+                DownloadVideo(url);
+                await Task.Delay(5000);
+                await sendy();
             }
-            if (comboBox3.Text == string.Empty)
-            {
-                MessageBox.Show("Select a Song first!", "Error");
-                return;
-            }
-            send();
         }
         private async Task send()
         {
@@ -148,6 +174,21 @@ namespace UniversalDiscordBot
             var aclient = await channel.ConnectAsync();
 
             Stream stream = CreateStream(comboBox3.Text).StandardOutput.BaseStream;
+            AudioOutStream astream = aclient.CreatePCMStream(AudioApplication.Mixed);
+            await stream.CopyToAsync(astream);
+            await astream.FlushAsync();
+        }
+        private async Task sendy()
+        {
+
+            var guildId = _client.Guilds.Where(x => x.Name == comboBox1.Text).Select(x => x.Id).FirstOrDefault();
+            var Guild = _client.GetGuild(guildId);
+            var VoiceChannels = Guild.VoiceChannels;
+            var channelId = VoiceChannels.Where(x => x.Name == comboBox2.Text).Select(x => x.Id).FirstOrDefault();
+            IVoiceChannel channel = (IVoiceChannel)_client.GetChannel(channelId);
+            var aclient = await channel.ConnectAsync();
+
+            Stream stream = CreateStream("C:/PATH/temp.webm").StandardOutput.BaseStream;
             AudioOutStream astream = aclient.CreatePCMStream(AudioApplication.Mixed);
             await stream.CopyToAsync(astream);
             await astream.FlushAsync();

@@ -49,6 +49,11 @@ namespace UniversalDiscordBot
             var eb = new EmbedBuilder();
             eb.WithTitle(textBox1.Text);
             eb.WithDescription(textBox2.Text);
+            eb.WithAuthor("");
+            eb.WithFooter("");
+            eb.WithImageUrl("");
+            eb.WithThumbnailUrl("");
+            eb.WithUrl("");
             string color = comboBox3.Text;
 
             if (color == "Blue")
